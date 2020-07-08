@@ -54,7 +54,7 @@ room['treasure'].s_to = room['narrow']
 GAME_ON = True
 
 player = Player(room['outside'])
-print(f"{player.location.name} - {player.location.description}")
+print(f"{player.location}")
 
 while GAME_ON == True:
     user_input = input("What will you do? ")
