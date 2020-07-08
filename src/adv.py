@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -49,3 +50,33 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+GAME_ON = True
+
+player = Player(room['outside'])
+print(f"{player.location.name} - {player.location.description}")
+
+while GAME_ON == True:
+    user_input = input("What will you do? ")
+
+    if user_input == 'q':
+        GAME_ON = False
+
+    # Logic for handling user input
+    try:
+        if user_input not in ['n', 's', 'e', 'w', 'q']:
+            continue
+        if user_input == 'n':
+            player.location = player.location.n_to
+        if user_input == 's':
+            player.location = player.location.s_to
+        if user_input == 'e':
+            player.location = player.location.e_to
+        if user_input == 'w':
+            player.location = player.location.w_to
+
+        print(f"{player.location.name} - {player.location.description}")
+
+    except:
+        print("You can't go that way!")
+        continue
